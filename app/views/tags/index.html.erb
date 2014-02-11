@@ -1,0 +1,7 @@
+<%= render @tags %>
+
+<br />
+
+<% if signed_in? && current_user.admin? %>
+	<%= link_to "Create New Tag", new_tag_path %>
+<% end %>

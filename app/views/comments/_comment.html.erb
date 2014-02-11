@@ -1,0 +1,13 @@
+<li>
+  <span class="comment-header">
+    Comment by <%= link_to comment.user.name, comment.user %> 
+    <% if current_user?(comment.user) %>
+      <%= link_to "", { action: "destroy", id: comment.id, controller: "comments"},
+                                method: :delete, data: { confirm: "Are you sure?" },
+                                :class => "icon-remove red", :title => "Delete" %>
+    <% end %>
+    :
+    </span>
+    <br>
+    <span class="comment-content"><%= comment.content %> </span>
+</li>

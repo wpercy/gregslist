@@ -1,0 +1,20 @@
+<% provide(:title, @tag.name) %>
+<h1><%= @tag.name.titleize %></h1>
+
+<h7>Current Listings (<%= pluralize(@microposts.count, 'listing') %>) </h7>
+<ul>
+  <h4><%= render @microposts %></h4>
+</ul>
+
+<br></br>
+<br></br>
+<br></br>
+
+
+<h7>Post new listing</h7>
+  <% if signed_in? %>
+    <%= render 'shared/micropost_form' %>
+  <% else %>
+    <p>Please register or sign in to post a new listing.</p>
+  <% end %>
+

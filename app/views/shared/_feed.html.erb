@@ -1,0 +1,8 @@
+<% if @feed_items.any? %>
+  <ol class="microposts">
+    <%= render partial: 'shared/feed_item', collection: @feed_items %>
+  </ol>
+  <%= will_paginate @feed_items %>
+<% else %>
+  <p>There are no postings for your favorite tags. Go to Account > Settings to add or remove favorite tags.</p>
+<% end %>

@@ -1,0 +1,7 @@
+<%= simple_form_for @newpm  do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+    <%= f.text_field :recipient_email, placeholder: "Enter recipients email.."%>
+    <%= f.text_area :message, placeholder: "Compose a message..." %>
+    <%= hidden_field_tag :sender_id, current_user.id %>
+  <%= f.submit "Send", class: "btn btn-large btn-primary" %>
+<% end %>

@@ -1,0 +1,12 @@
+<h1> Create New Message </h1>
+<%= render 'shared/pm_form' %>
+<h3> <%= 'Messages' %> </h3>
+<% @pms.each do |pm| %>
+	<%= User.find(pm.sender_id).name %>
+	<%= pm.created_at.localtime.strftime("%H:%M:%S %m-%d-%Y") %>
+	<%= link_to "view message", pm %>
+	<br>
+<% end %>
+
+
+

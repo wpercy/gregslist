@@ -1,0 +1,25 @@
+<% if signed_in? %>
+  <div class="row">
+    <div class="span5">
+      <%= render 'shared/search_form' %>
+      <h3>Favorites Feed!</h3>
+      <%= render 'shared/feed' %>
+    </div>
+    <div class="span5 offset1" style="padding-top:40px;">
+      <h3> Recent Postings </h3>
+      <%= render 'shared/recents' %>
+    </div>
+  </div>
+<% else %>
+  <div class="center hero-unit">
+    <h1>Welcome to Gregslist!</h1>
+
+    <h3 style="color: #222;">
+      This is the home page for the biggest web app of 2013!
+    </h3>
+    <br>
+
+    <%= link_to "Sign up now!", signup_path,
+                                class: "btn btn-large btn-orange" %>
+  </div>
+<% end %>

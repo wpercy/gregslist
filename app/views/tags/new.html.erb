@@ -1,0 +1,15 @@
+<% provide(:title, 'Create New Tag') %>
+<h1>Create New Tag</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@tag) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, maxLength: 32 %>
+
+      <%= f.submit "Create new tag", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

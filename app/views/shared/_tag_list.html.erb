@@ -1,0 +1,13 @@
+<% @tags = Tag.all %>
+
+<% @tags.each do |t| %>
+  <li>
+    <%= link_to t.name.split(" ").map(&:capitalize).join(" "), t %>
+  </li>
+<% end %>
+
+<% if signed_in? && current_user.admin? %>
+	<li>
+		<%= link_to "Manage Tags", tags_path %>
+	</li>
+<% end %>

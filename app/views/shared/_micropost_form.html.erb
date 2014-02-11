@@ -1,0 +1,10 @@
+<%= simple_form_for @micropost do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= hidden_field_tag :tag, @tag.name %>
+    <%= f.text_field :post_title, placeholder: "Add title of listing..." %>
+    <%= f.text_area :content, placeholder: "Compose new listing..." %>
+    <%= f.input :image %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>

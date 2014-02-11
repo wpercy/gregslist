@@ -1,0 +1,19 @@
+<li id="<%= feed_item.id %>">
+    <span class="content">
+      <%= link_to feed_item.post_title, feed_item %>
+      <span style="padding-left:5em;">
+      Tag: <%= link_to feed_item.tag, "tags/" + Tag.find_by_name(feed_item.tag).id.to_s%>
+    </span>
+    </span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(feed_item.created_at) %> ago by <%= link_to feed_item.user.name, feed_item.user %>.
+    </span>
+  <% if current_user != feed_item.user && !current_user.location.nil? && !feed_item.user.location.nil? %>
+    <br>
+    <span><%= get_distance(current_user.location, feed_item.user.location) %></span>
+  <% end %>
+  <% if !feed_item.image_file_name.nil? %>
+    <br>
+    <%= image_tag(feed_item.image.url(:thumb)) %>
+  <% end %>
+</li>

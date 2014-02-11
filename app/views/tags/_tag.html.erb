@@ -1,0 +1,6 @@
+<li>
+	<%= link_to	tag.name, tag %>
+	<% if signed_in? && current_user.admin? %>
+	  | <%= link_to "delete", tag, method: :delete, data: { confirm: "Are you sure?" } %>
+	<% end %>
+</li>

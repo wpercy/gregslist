@@ -1,0 +1,40 @@
+<span class="row">
+  <% if current_user = @micropost.user %>
+    <%= link_to content_tag(:i, "", class: "icon-trash icon-white") + " Delete", { action: "destroy", id: @micropost.id, controller: "microposts"}, data: { confirm: "Are you sure?" }, :method => :delete, class: "btn btn-danger remove_fields float-right" %>
+  <% end %>
+  <h1><%= @micropost.post_title %></h1>
+  <h4 class="center">Posted by: <%= link_to @micropost.user.name, @micropost.user %> under <%= link_to @tag.name, @tag %></h4>
+  <br>
+  <% if current_user != @micropost.user && !current_user.location.nil? && !@micropost.user.location.nil? %>
+    <p class="center"><%= get_distance(current_user.location, @micropost.user.location) %></p>
+  <% end %>
+  <% if !@micropost.image_file_name.nil? %>
+    <%= image_tag(@micropost.image.url(:medium), {:class => "center"}) %>
+  <% end %>
+
+<br>
+
+<h8>Description:</h8>
+<p><%= @micropost.content %></p>
+
+
+<h8> Location:</h8>
+<% if @coords[0] %>
+    <div id= "map">
+      <%= image_tag "http://maps.google.com/maps/api/staticmap?size=550x550&sensor=false&zoom=9&markers=#{@coords[0].latitude}%2C#{@coords[0].longitude}" %>
+     </div>
+<% end %>
+<br>
+
+<h8>Comments:</h8>
+<ul>
+  <%= render @comments %>
+</ul>
+
+<h7>Add comment</h7>
+  <% if signed_in? %>
+    <%= render 'shared/comment_form' %>
+  <% else %>
+    <p>Please register or sign in to post a comment.</p>
+  <% end %>
+

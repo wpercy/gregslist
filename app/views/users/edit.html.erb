@@ -1,0 +1,28 @@
+<% provide(:title, "Edit user") %>
+<% @tags = Tag.all %>
+
+<h1>Update your profile</h1>
+<p class="center">* - is required</p>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= simple_form_for @user do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.input :name %>
+      <%= f.input :email %>
+      <%= f.input :location %>
+      <%= f.input :password, required: true %>
+      <%= f.input :password_confirmation, label: "Confirm password", required: true %>
+      <%= f.input :favorites, :collection => @tags.collect{ |z| z.name}, :as => :check_boxes, label_html: { :class => "form_label" }, html_wrapper: { :class => "check_box_input" } %>
+      <br>
+      <div id="row">
+        <%= f.button :submit, :class => 'btn btn-success' %>
+        <button type="button" class="btn btn-danger" href="/">Cancel</button>
+      </div>
+    <% end %>
+    <br>
+    <%= gravatar_for(@user) %>
+    <a href="http://gravatar.com/emails">Change gravatar</a>
+  </div>
+</div>

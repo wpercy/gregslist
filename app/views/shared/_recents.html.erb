@@ -1,0 +1,8 @@
+<% if @recent_items.any? %>
+  <ol class="microposts">
+    <%= render partial: 'shared/feed_item', collection: @recent_items %>
+  </ol>
+  <%= will_paginate @recent_items %>
+<% else %>
+  <p>There are no recent postings.<p>
+<% end %>

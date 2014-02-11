@@ -1,0 +1,7 @@
+<h3> From: <%= @sender.name %> </h3>
+<p> <%= @pm.message  %></p>
+<%= link_to "delete", @pm, method: :delete, data: { confirm: "You sure?" } %>
+<hr>
+<h4> <%= "Reply" %> </h>
+<% @send_to= @sender.email %>
+<%= render 'shared/pm_form' %>
